@@ -1,9 +1,10 @@
+import OnBoard from "@/src/components/on-board";
 
 
-function OnBoard (){
-    return <div>
-        This is our OnBoard page.
-    </div>
+function OnBoardPage() {
+    return(
+        <OnBoard />
+    )
 }
 
-export default OnBoard;
+export default OnBoardPage;
