@@ -25,6 +25,7 @@ export const initialRecruiterFormdata = {
     name: '',
     companyName: '',
     companyRole: '',
+
 }
 
 export const candidateOnboardFormControls = [
@@ -138,7 +139,6 @@ export const initialCandidateFormData = {
     graduationYear:'',
     linkedinLink:'',
     githubLink:'',
-    isPremiumUser: false
 
 
 

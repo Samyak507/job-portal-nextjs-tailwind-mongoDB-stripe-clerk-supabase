@@ -4,17 +4,42 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/src/components/ui/ta
 import { useState } from "react";
 import CommonForm from "../common-form";
 import { candidateOnboardFormControls, initialCandidateFormData, initialRecruiterFormdata, recruiterOnboardControls } from "@/src/utils";
+import { useUser } from "@clerk/nextjs";
 
 function OnBoard() {
 
     const [currentTab, setCurrentTab] = useState('candidate');
     const [recruiterFormData, setRecruiterFormData] = useState(initialRecruiterFormdata);
-    const [candidateFormData, setCandidateFormData] = useState(initialCandidateFormData)
+    const [candidateFormData, setCandidateFormData] = useState(initialCandidateFormData);
+
+    const currentAuthUser = useUser();
+    const {user} = currentAuthUser;
+
+
+    console.log(currentAuthUser);
  
     function handleTabChange(value) {
         setCurrentTab(value);
     }
 
+    // console.log(recruiterFormData, 'recruiterFormData');
+
+    function handleRecruiterFormValid(){
+        return recruiterFormData && recruiterFormData.name.trim() !== '' && recruiterFormData.companyName.trim() !== '' && recruiterFormData.companyRole.trim() !== ''
+    }
+
+    async function createProfileAction(){
+        const data = {
+            recruiterInfo : recruiterFormData,
+            role : 'recruiter',
+            isPremiumUser : false,
+            userId: user?.id,
+            email : user?.primaryEmailAddress?.emailAddress,
+
+        };
+
+        await createProfileAction(data, '/onboard');
+    }
 
     return (
         <div className="bg-white">
@@ -42,6 +67,8 @@ function OnBoard() {
                         buttonText={'Onboard as Recruiter'}
                         formData={recruiterFormData}
                         setFormData={setRecruiterFormData}
+                        isBtnDisabled={!handleRecruiterFormValid()}
+                        action={createProfileAction}
                     />
                 </TabsContent>
             </Tabs>
