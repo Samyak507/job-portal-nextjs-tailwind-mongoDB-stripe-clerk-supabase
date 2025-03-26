@@ -5,6 +5,8 @@ import { useState } from "react";
 import CommonForm from "../common-form";
 import { candidateOnboardFormControls, initialCandidateFormData, initialRecruiterFormdata, recruiterOnboardControls } from "@/src/utils";
 import { useUser } from "@clerk/nextjs";
+import { createProfileAction } from "@/src/actions";
+
 
 function OnBoard() {
 
@@ -28,7 +30,7 @@ function OnBoard() {
         return recruiterFormData && recruiterFormData.name.trim() !== '' && recruiterFormData.companyName.trim() !== '' && recruiterFormData.companyRole.trim() !== ''
     }
 
-    async function createProfileAction(){
+    async function createProfile(){
         const data = {
             recruiterInfo : recruiterFormData,
             role : 'recruiter',
@@ -39,7 +41,7 @@ function OnBoard() {
         };
 
         await createProfileAction(data, '/onboard');
-    }
+     }
 
     return (
         <div className="bg-white">
@@ -68,7 +70,7 @@ function OnBoard() {
                         formData={recruiterFormData}
                         setFormData={setRecruiterFormData}
                         isBtnDisabled={!handleRecruiterFormValid()}
-                        action={createProfileAction}
+                        action={createProfile()}
                     />
                 </TabsContent>
             </Tabs>
