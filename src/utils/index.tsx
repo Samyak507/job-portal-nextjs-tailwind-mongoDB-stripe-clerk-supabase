@@ -124,22 +124,76 @@ export const candidateOnboardFormControls = [
 ]
 
 export const initialCandidateFormData = {
-    resume:'',
-    name:'',
-    currentJobLocation:'',
-    prefferedJobLocation:'',
-    currentSalary:'',
-    noticePeriod:'',
-    skills:'',
-    currentCompany:'',
-    previousCompanies:'',
-    totalExperience:'',
-    college:'',
-    collegeLocation:'',
-    graduationYear:'',
-    linkedinLink:'',
-    githubLink:'',
+    resume: '',
+    name: '',
+    currentJobLocation: '',
+    prefferedJobLocation: '',
+    currentSalary: '',
+    noticePeriod: '',
+    skills: '',
+    currentCompany: '',
+    previousCompanies: '',
+    totalExperience: '',
+    college: '',
+    collegeLocation: '',
+    graduationYear: '',
+    linkedinLink: '',
+    githubLink: '',
+}
 
+export const postNewJobFormControls = [
+    {
+        label: 'Company Name',
+        name: 'companyName',
+        placeholder: 'Company Name',
+        componentType: 'input',
+        disabled:true,
+    },
+    {
+        label: 'Title',
+        name: 'title',
+        placeholder: 'Job Title',
+        componentType: 'input',
+    },
+    {
+        label: 'Job Type',
+        name: 'jobType',
+        placeholder: 'Job Typr',
+        componentType: 'input',
+    },
+    {
+        label: 'Location',
+        name: 'location',
+        placeholder: 'Job Location',
+        componentType: 'input',
+    },
+    {
+        label: 'Experience',
+        name: 'experience',
+        placeholder: 'Experience',
+        componentType: 'input',
+    },
+    {
+        label: 'Job Description',
+        name: 'jobDescription',
+        placeholder: 'Job description',
+        componentType: 'input',
+    },
+    {
+        label: 'Skills',
+        name: 'skills',
+        placeholder: 'Skills',
+        componentType: 'input',
+    },
+]
 
+export const initialPostNewJobFormData = {
+    companyName: '',
+    title: '',
+    type: '',
+    location: '',
+    experience: '',
+    jobDescription: '',
+    skills: '',
 
 }
