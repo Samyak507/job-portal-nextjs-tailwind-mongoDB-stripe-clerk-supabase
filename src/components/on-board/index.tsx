@@ -15,33 +15,29 @@ function OnBoard() {
     const [candidateFormData, setCandidateFormData] = useState(initialCandidateFormData);
 
     const currentAuthUser = useUser();
-    const {user} = currentAuthUser;
+    const { user } = currentAuthUser;
 
-
-    console.log(currentAuthUser);
- 
     function handleTabChange(value) {
         setCurrentTab(value);
     }
 
-    // console.log(recruiterFormData, 'recruiterFormData');
 
-    function handleRecruiterFormValid(){
+    function handleRecruiterFormValid() {
         return recruiterFormData && recruiterFormData.name.trim() !== '' && recruiterFormData.companyName.trim() !== '' && recruiterFormData.companyRole.trim() !== ''
     }
 
-    async function createProfile(){
+    async function createProfile() {
         const data = {
-            recruiterInfo : recruiterFormData,
-            role : 'recruiter',
-            isPremiumUser : false,
+            recruiterInfo: recruiterFormData,
+            role: 'recruiter',
+            isPremiumUser: false,
             userId: user?.id,
-            email : user?.primaryEmailAddress?.emailAddress,
+            email: user?.primaryEmailAddress?.emailAddress,
 
         };
 
         await createProfileAction(data, '/onboard');
-     }
+    }
 
     return (
         <div className="bg-white">
@@ -57,10 +53,10 @@ function OnBoard() {
                 </div>
                 <TabsContent value="candidate">
                     <CommonForm
-                    formData={candidateFormData}
-                    setFormData={setCandidateFormData}
-                    formControls={candidateOnboardFormControls}
-                    buttonText={'OnBoard as Candidate'}
+                        formData={candidateFormData}
+                        setFormData={setCandidateFormData}
+                        formControls={candidateOnboardFormControls}
+                        buttonText={'OnBoard as Candidate'}
                     />
                 </TabsContent>
                 <TabsContent value="recruiter">
@@ -70,7 +66,7 @@ function OnBoard() {
                         formData={recruiterFormData}
                         setFormData={setRecruiterFormData}
                         isBtnDisabled={!handleRecruiterFormValid()}
-                        action={createProfile()}
+                        action={createProfile}
                     />
                 </TabsContent>
             </Tabs>

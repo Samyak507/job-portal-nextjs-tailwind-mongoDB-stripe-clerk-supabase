@@ -15,8 +15,7 @@ async function OnBoardPage() {
     const profileInfo = await fetchProfileAction(user?.id);
 
     if (profileInfo?._id) {
-        if (profileInfo?.role === 'recruiter' &&
-            !profileInfo.isPremiumUser) redirect('/membership')
+        if (profileInfo?.role === 'recruiter' && !profileInfo.isPremiumUser) redirect('/membership')
         else redirect('/')
     } else return <OnBoard />
 }
